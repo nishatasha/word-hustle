@@ -1,9 +1,3 @@
-@charset "UTF-8";
-
-/*---------------------------------------*/
-/* Base                                  */
-/*---------------------------------------*/
-
 body {
   font-family: Arial, sans-serif, 'Open-Sans', 'Roboto';
   background-color: #000000;
@@ -14,26 +8,34 @@ body {
   background-size: cover;
 }
 
-/*---------------------------------------*/
-/* Container                                 */
-/*---------------------------------------*/
-
 .container {
-  width: 330px;
-  height: 490px;
+  width: 90%;
+  max-width: 300px;
+  height: 560px; /* Adjusted height to fit the hexagonal shape */
   margin: auto;
   text-align: center;
-  align-items: center;
   padding: 20px;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background-color: rgb(21, 21, 247);
+  background-color: rgb(21, 21, 247, 0.95);
   color: #fff;
   border-radius: 5px;
+  border: 1px solid rgba(12, 12, 181, 0.95);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 2;
+  clip-path: polygon(25% 0%, 75% 0%, 100% 50%, 75% 100%, 25% 100%, 0% 50%);
+  /* Clip path for custom hexagonal shape */
+  z-index: 1;
+}
+
+
+h1 {
+  margin-top: 50px;
+  font-size: 65px;
+  text-align: center;
+  color: #fae128;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .userInput {
@@ -42,28 +44,31 @@ body {
   margin: 10px;
 }
 
-.userInput::placeholder {
-  text-align: center;
-}
-
-h1 {
-  font-size: 45px;
-  padding: 5px;
-}
-
 p {
   font-size: 20px;
 }
 
-
-.restartBtn {
-  display: none;
-  font-size: 25px;
+.game {
+  margin-top: 40px;
+  margin-bottom: 10px;
+  position: relative;
+  text-align: center;
+  /* Ensure proper positioning of child elements */
 }
 
+.timer {
+  position: absolute;
+  top: -45px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 30px;
+}
 
-.game {
-  margin-top: 20px;
+.userInput {
+  display: none;
+  text-align: center;
+  margin: 10px;
+  position: relative;
 }
 
 .word {
@@ -72,31 +77,28 @@ p {
 }
 
 .time {
-  font-size: 75px;
+  font-size: 60px;
 }
+
 
 input[type="text"] {
   padding: 5px;
   font-size: 18px;
-  text-align: center;
-  place-items: center;
-  justify-content: center;
-  margin: 15px 30px 15px;
+  text-align: center; /* Center align the text */
+  margin: 10px auto; /* Center the input horizontally */
   border-radius: 5px;
-  width: 300px;
+  width: 260px;
   height: 40px;
-  margin-left: auto;
-  margin-right: auto;
 }
 
-.userInput::placeholder {
-  align-items: center;
-  text-align: center;
 
+.restartBtn {
+  display: none;
+  font-size: 25px;
 }
 
 button {
-  padding: 10px 20px;
+  padding: 13px 20px;
   margin-top: 20px;
   width: 150px;
   margin-right: 10px;
@@ -137,29 +139,28 @@ main {
   animation: backgroundAnimation 20s linear infinite alternate;
 }
 
-
-.container {
-  z-index: 1;
-  /* Ensure content appears above the background */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: -1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
-.timer {
-  position: absolute;
-  top: 124px;
-  /* Adjust vertical position */
-  left: 44%;
-  /* Center horizontally */
-  transform: translateX(-50%);
+.blur-container {
+  filter: blur(5px);
 }
 
-/*---------------------------------------*/
-/* Modal                                 */
-/*---------------------------------------*/
 
 .modal {
   display: none;
   position: fixed;
-  z-index: 1;
+  text-align: center;
+  z-index: 2;
   left: 0;
   top: 0;
   width: 100%;
@@ -169,7 +170,8 @@ main {
 }
 
 .modal-content {
-  background-color: #ffffff;
+  background-color: #930707;
+  color: #fff;
   margin: 20% auto;
   padding: 20px;
   border: 1px solid #888;
@@ -191,12 +193,7 @@ main {
   cursor: pointer;
 }
 
-
-
-/*---------------------------------------*/
-/* Media Queries                                 */
-/*---------------------------------------*/
-
+/* Media Queries */
 @media only screen and (min-width: 600px) {
   .container {
     width: 80%;
@@ -232,12 +229,10 @@ main {
 
   .userInput {
     font-size: 1.2em;
-    /* Adjust other styles as needed */
   }
 
   button {
     font-size: 1.2em;
-    /* Adjust other styles as needed */
   }
 }
 
@@ -248,11 +243,9 @@ main {
 
   .userInput {
     font-size: 1.4em;
-    /* Adjust other styles as needed */
   }
 
   button {
     font-size: 1.4em;
-    /* Adjust other styles as needed */
   }
 }

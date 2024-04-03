@@ -2,7 +2,6 @@
 import Score from './score.js';
 
 // Word list
-
 const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building', 'population',
   'weather', 'bottle', 'history', 'dream', 'character', 'money', 'absolute',
   'discipline', 'machine', 'accurate', 'connection', 'rainbow', 'bicycle',
@@ -33,6 +32,8 @@ const correctSound = document.querySelector('#correctSound');
 const resetBtn = document.querySelector('.resetBtn');
 const closeButton = document.querySelector('.close');
 const modal = document.querySelector('#scoreModal');
+const timer = document.querySelector('.timer')
+const hit = document.querySelector('.hit')
 
 
 let time = 99;
@@ -63,13 +64,12 @@ function init() {
   scoreBtn.addEventListener('click', showScore);
 }
 
-
 function startGame() {
   if (!isPlaying) {
     isPlaying = true;
     startBtn.style.display = 'none';
     restartBtn.style.display = 'inline-block';
-    time = 99;
+    time = 5;
     score = 0;
     scoreElement.textContent = score;
     showWord();
@@ -77,8 +77,6 @@ function startGame() {
     userInput.value = '';
     userInput.focus();
     scoreElement.style.display = 'inline';
-
-
 
     // Initialize game
     init();
@@ -107,8 +105,6 @@ function pauseAndResetSound(sound) {
   sound.currentTime = 0;
 }
 
-
-
 // Restart game
 function restartGame() {
   isPlaying = false;
@@ -126,7 +122,6 @@ function restartGame() {
   // Reset word element style
   wordElement.textContent = '';
 
-
   // Redirect to the starting page
   window.location.href = 'index.html';
 }
@@ -141,6 +136,7 @@ function gameOver() {
   wordElement.style.display = 'none';
   gameEndContainer.style.display = 'block';
   resetBtn.style.display = 'none';
+  timer.style.display = 'none';
 }
 
 function openModal() {
@@ -148,10 +144,8 @@ function openModal() {
 }
 
 function closeModal() {
-  const modal = document.getElementById('scoreModal');
   modal.style.display = 'none';
 }
-
 
 if (closeButton) {
   closeButton.addEventListener('click', closeModal);
@@ -176,11 +170,14 @@ function showScore() {
   openModal();
 }
 
-
-
 // Show random word
 function showWord() {
-  wordIndex = Math.floor(Math.random() * words.length);
+  let newIndex;
+  do {
+    newIndex = Math.floor(Math.random() * words.length);
+  } while (newIndex === wordIndex);
+  
+  wordIndex = newIndex;
   wordElement.textContent = words[wordIndex];
   resetBtn.style.display = 'inline-block'
 }
@@ -190,15 +187,22 @@ function updateTime() {
   time--;
   timeElement.textContent = time;
 
-  if (time === 99) {
+  if (time === 5) {
     showWord();
   }
 
   if (time === 0) {
     clearInterval(timerInterval); // Clear the interval to stop the timer
+    timeElement.textContent = 'Game Over';
     gameOver();
+  } else {
+    timeElement.textContent = time;
   }
-}
+
+  if (time === 5) {
+    showWord();
+  }
+  }
 
 // Start match
 function startMatch() {
@@ -211,7 +215,7 @@ function startMatch() {
 
     correctSound.play();
 
-    // Pause the sound after 1 seconds
+    // Pause the sound after 1 second
     setTimeout(() => {
       correctSound.pause();
       correctSound.currentTime = 0; // Reset audio to the beginning
@@ -225,19 +229,14 @@ function startMatch() {
   }
 }
 
-
-
 // Match words
 function matchWords() {
-  if (userInput.value === wordElement.textContent.toLowerCase()) {
+  if (userInput.value.toLowerCase() === wordElement.textContent.toLowerCase()) {
     return true;
   } else {
     return false;
   }
 }
-
-
-
 
 // Start game when Start button is clicked
 startBtn.addEventListener('click', startGame);
