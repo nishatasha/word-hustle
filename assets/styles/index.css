@@ -6,13 +6,17 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  margin: 0; /* Remove default body margin */
-  padding: 0; /* Remove default body padding */
+  margin: 0;
+  /* Remove default body margin */
+  padding: 0;
+  /* Remove default body padding */
 }
 
 .container {
-  width: 80%; /* Decrease the width */
-  max-width: 300px; /* Set maximum width */
+  width: 80%;
+  /* Decrease the width */
+  max-width: 300px;
+  /* Set maximum width */
   text-align: center;
   padding: 20px;
   height: 500px;
@@ -44,7 +48,8 @@ p {
 }
 
 .hit-text {
-  display: none; /* Initially hide the Hit text */
+  display: none;
+  /* Initially hide the Hit text */
   font-size: 20px;
   margin-top: 10px;
   position: relative;
@@ -83,7 +88,7 @@ p {
 
 .word {
   font-size: 27px;
-  margin-top: 10px;
+  margin-top: 40px;
   text-transform: uppercase;
 }
 
@@ -96,8 +101,10 @@ p {
 input[type="text"] {
   padding: 5px;
   font-size: 20px;
-  text-align: center; /* Center align the text */
-  margin: 10px auto; /* Center the input horizontally */
+  text-align: center;
+  /* Center align the text */
+  margin: 10px auto;
+  /* Center the input horizontally */
   border-radius: 5px;
   width: 260px;
   height: 50px;
@@ -142,15 +149,20 @@ button:hover {
 }
 
 main {
-  display: flex; /* Use flexbox to center main content */
-  justify-content: center; /* Horizontally center main content */
-  align-items: center; /* Vertically center main content */
-  min-height: 100vh; /* Set minimum height to 100% of viewport height */
+  display: flex;
+  /* Use flexbox to center main content */
+  justify-content: center;
+  /* Horizontally center main content */
+  align-items: center;
+  /* Vertically center main content */
+  min-height: 100vh;
+  /* Set minimum height to 100% of viewport height */
   width: 100%;
   height: 200px;
   max-width: 800px;
   margin: auto;
 }
+
 .modal {
   display: none;
   position: fixed;
@@ -208,8 +220,8 @@ main {
 /* Media Queries */
 @media only screen and (max-width: 480px) {
   .container {
-      width: 90%;
-      max-width: 600px;
+    width: 90%;
+    max-width: 600px;
   }
 
   .time {
@@ -217,18 +229,18 @@ main {
   }
 
   .userInput {
-      font-size: 10px;
+    font-size: 10px;
   }
 
   button {
-      font-size: 10px;
+    font-size: 10px;
   }
 }
 
 @media only screen and (min-width: 600px) {
   .container {
-      width: 80%;
-      max-width: 600px;
+    width: 80%;
+    max-width: 600px;
   }
 
   .time {
@@ -236,39 +248,39 @@ main {
   }
 
   .userInput {
-      font-size: 10px;
+    font-size: 10px;
   }
 
   button {
-      font-size: 10px;
+    font-size: 10px;
   }
 }
 
 @media only screen and (min-width: 768px) {
   .container {
-      width: 70%;
-      max-width: 800px;
+    width: 70%;
+    max-width: 800px;
   }
 
   .userInput {
-      font-size: 12px;
+    font-size: 12px;
   }
 
   button {
-      font-size: 12px;
+    font-size: 12px;
   }
 }
 
 @media only screen and (min-width: 992px) {
   .container {
-      width: 60%;
-      max-width: 1000px;
+    width: 60%;
+    max-width: 1000px;
   }
 }
 
 @media only screen and (min-width: 1200px) {
   .container {
-      width: 50%;
-      max-width: 1200px;
+    width: 50%;
+    max-width: 1200px;
   }
 }
