@@ -33,7 +33,8 @@ const resetBtn = document.querySelector('.resetBtn');
 const closeButton = document.querySelector('.close');
 const modal = document.querySelector('#scoreModal');
 const timer = document.querySelector('.timer')
-const hit = document.querySelector('.hit')
+const seconds = document.querySelector(".seconds")
+const gameElement = document.querySelector(".game")
 
 
 let time = 99;
@@ -69,7 +70,7 @@ function startGame() {
     isPlaying = true;
     startBtn.style.display = 'none';
     restartBtn.style.display = 'inline-block';
-    time = 5;
+    time = 99;
     score = 0;
     scoreElement.textContent = score;
     showWord();
@@ -80,6 +81,8 @@ function startGame() {
 
     // Initialize game
     init();
+
+    gameElement.classList.add('active');
   }
 }
 
@@ -122,9 +125,18 @@ function restartGame() {
   // Reset word element style
   wordElement.textContent = '';
 
-  // Redirect to the starting page
+  // Reset game variables
+  clearInterval(timerInterval);
+  time = 99;
+  score = 0;
+  scoreElement.textContent = score;
+  timeElement.textContent = time;
+  timeElement.style.color = ''; // Reset color to default
+
+  // Immediately redirect to the starting page without delay
   window.location.href = 'index.html';
 }
+
 
 // Game over
 function gameOver() {
@@ -137,6 +149,7 @@ function gameOver() {
   gameEndContainer.style.display = 'block';
   resetBtn.style.display = 'none';
   timer.style.display = 'none';
+  seconds.style.display = 'none';
 }
 
 function openModal() {
@@ -187,8 +200,16 @@ function updateTime() {
   time--;
   timeElement.textContent = time;
 
-  if (time === 5) {
+  if (time === 99) {
     showWord();
+  }
+
+  if (time <= 10) {
+    timeElement.style.color = '#ff0f0f'; // Change color to red for the last 10 seconds
+    seconds.style.color = '#ff0f0f';
+  } else {
+    timeElement.style.color = ''; // Reset color to default
+    seconds.style.color = '';
   }
 
   if (time === 0) {
@@ -202,7 +223,9 @@ function updateTime() {
   if (time === 5) {
     showWord();
   }
-  }
+}
+
+
 
 // Start match
 function startMatch() {
