@@ -114,7 +114,7 @@ function restartGame() {
   startBtn.style.display = 'inline-block'; // Show the start button
   restartBtn.style.display = 'none'; // Hide the restart button
   gameEndContainer.style.display = 'none';
-  userInput.style.display = 'block'; // Show the userInput element
+  userInput.style.display = 'none'; // Show the userInput element
   wordElement.style.display = 'block'; // Show the word element
 
   // Reset userInput value and style
@@ -132,6 +132,7 @@ function restartGame() {
   scoreElement.textContent = score;
   timeElement.textContent = time;
   timeElement.style.color = ''; // Reset color to default
+  gameElement.style.display = 'none';
 
   // Immediately redirect to the starting page without delay
   window.location.href = 'index.html';
@@ -189,7 +190,7 @@ function showWord() {
   do {
     newIndex = Math.floor(Math.random() * words.length);
   } while (newIndex === wordIndex);
-  
+
   wordIndex = newIndex;
   wordElement.textContent = words[wordIndex];
   resetBtn.style.display = 'inline-block'
@@ -220,9 +221,7 @@ function updateTime() {
     timeElement.textContent = time;
   }
 
-  if (time === 5) {
-    showWord();
-  }
+
 }
 
 
