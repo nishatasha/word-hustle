@@ -47,26 +47,24 @@ main {
 }
 
 .container {
-  width: 80%;
-  /* Decrease the width */
-  max-width: 300px;
-  /* Set maximum width */
-  text-align: center;
-  padding: 20px;
+  width: 330px;
   height: 500px;
+  text-align: center;
+  align-items: center;
+  padding: 20px;
   background-color: rgba(70, 39, 206, 0.97);
   color: #fff;
   border-radius: 5px;
   border: 1px solid rgba(70, 39, 206, 0.97);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  z-index: 1;
+  z-index: 2;
 }
 
 
 h1 {
   font-weight: 700;
   margin-top: 5px;
-  margin-bottom: 80px;
+  margin-bottom: 70px;
   font-size: 25px;
   text-align: center;
   color: #c0bdb1;
@@ -89,9 +87,9 @@ p {
 
 .hit-text {
   display: none;
-  /* Initially hide the Hit text */
   font-size: 20px;
   margin-top: 10px;
+  margin-bottom: 10px;
   position: relative;
   text-align: center;
   left: 70%;
@@ -104,13 +102,11 @@ p {
   margin-bottom: 5px;
 }
 
-
 .game {
   margin-top: 40px;
   margin-bottom: 10px;
   position: relative;
   text-align: center;
-  /* Ensure proper positioning of child elements */
 }
 
 .clock {
@@ -135,22 +131,23 @@ p {
 }
 
 .time {
-  font-size: 85px;
+  font-size: 80px;
   line-height: 1.2;
   color: #fff;
 }
 
-
 input[type="text"] {
   padding: 5px;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
   /* Center align the text */
   margin: 10px auto;
   /* Center the input horizontally */
   border-radius: 5px;
-  width: 260px;
-  height: 50px;
+  place-items: center;
+  justify-content: center;
+  width: 300px;
+  height: 45px;
   color: #000000;
 }
 
@@ -165,8 +162,8 @@ input[type="text"] {
 
 button {
   padding: 10px 20px;
-  margin-top: 18px;
-  width: 140px;
+  margin-top: 20px;
+  width: 150px;
   margin-right: 10px;
   background-color: #07b4f3;
   color: #fff;
@@ -198,11 +195,16 @@ button:hover {
   filter: blur(5px);
 }
 
+/*------------------------------------------------------*/
+/* Score                                               */
+/*------------------------------------------------------*/
+
+
 .modal {
   display: none;
   position: fixed;
   text-align: center;
-  z-index: 2;
+  z-index: 1;
   left: 0;
   top: 0;
   width: 100%;
@@ -210,10 +212,6 @@ button:hover {
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
 }
-
-/*------------------------------------------------------*/
-/* Score                                               */
-/*------------------------------------------------------*/
 
 .modal-content {
   background-color: #9667e0;
@@ -258,42 +256,10 @@ button:hover {
 /* Media Queries                                        */
 /*------------------------------------------------------*/
 
-@media only screen and (max-width: 480px) {
-  .container {
-    width: 60%;
-    max-width: 600px;
-  }
-
-  .time {
-    font-size: 60px;
-  }
-
-  .userInput {
-    font-size: 10px;
-  }
-
-  button {
-    font-size: 10px;
-  }
-
-}
-
 @media only screen and (min-width: 600px) {
   .container {
-    width: 60%;
+    width: 80%;
     max-width: 600px;
-  }
-
-  .time {
-    font-size: 50px;
-  }
-
-  .userInput {
-    font-size: 10px;
-  }
-
-  button {
-    font-size: 10px;
   }
 }
 
@@ -301,14 +267,6 @@ button:hover {
   .container {
     width: 70%;
     max-width: 800px;
-  }
-
-  .userInput {
-    font-size: 12px;
-  }
-
-  button {
-    font-size: 12px;
   }
 }
 
@@ -323,9 +281,5 @@ button:hover {
   .container {
     width: 50%;
     max-width: 1200px;
-  }
-
-  .time {
-    font-size: 75px;
   }
 }
