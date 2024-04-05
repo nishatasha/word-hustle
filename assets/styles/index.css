@@ -1,4 +1,5 @@
 @charset "UTF-8";
+
 body {
   font-family: Arial, sans-serif, 'Open-Sans', 'Roboto';
   background-color: #000000;
@@ -30,6 +31,20 @@ body {
   padding: 0;
 }
 
+main {
+  display: flex;
+  /* Use flexbox to center main content */
+  justify-content: center;
+  /* Horizontally center main content */
+  align-items: center;
+  /* Vertically center main content */
+  min-height: 100vh;
+  /* Set minimum height to 100% of viewport height */
+  width: 100%;
+  height: 200px;
+  max-width: 800px;
+  margin: auto;
+}
 
 .container {
   width: 80%;
@@ -51,7 +66,7 @@ body {
 h1 {
   font-weight: 700;
   margin-top: 5px;
-  margin-bottom: 80px;
+  margin-bottom: 70px;
   font-size: 25px;
   text-align: center;
   color: #c0bdb1;
@@ -59,7 +74,7 @@ h1 {
 }
 
 h2 {
-  color: #b6d9ea;
+  color: #a9ddf7;
 }
 
 .userInput {
@@ -79,8 +94,9 @@ p {
   margin-top: 10px;
   position: relative;
   text-align: center;
-  left: 45%;
+  left: 70%;
   right: 50%;
+  transform: translate(-28%, -12%);
 }
 
 .game.active .hit-text {
@@ -102,7 +118,7 @@ p {
   top: -60px;
   left: 50%;
   transform: translateX(-50%);
-  margin-top: 30px;
+  margin-top: 25px;
 }
 
 .userInput {
@@ -119,7 +135,7 @@ p {
 }
 
 .time {
-  font-size: 88px;
+  font-size: 85px;
   line-height: 1.2;
   color: #fff;
 }
@@ -137,6 +153,9 @@ input[type="text"] {
   height: 50px;
 }
 
+/*------------------------------------------------------*/
+/*Buttons                                               */
+/*------------------------------------------------------*/
 
 .restartBtn {
   display: none;
@@ -144,9 +163,9 @@ input[type="text"] {
 }
 
 button {
-  padding: 13px 20px;
-  margin-top: 20px;
-  width: 150px;
+  padding: 10px 20px;
+  margin-top: 18px;
+  width: 140px;
   margin-right: 10px;
   background-color: #07b4f3;
   color: #fff;
@@ -154,6 +173,7 @@ button {
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
+  align-items: center;
 }
 
 button:hover {
@@ -173,26 +193,9 @@ button:hover {
   margin-top: 10px;
 }
 
-main {
-  display: flex;
-  /* Use flexbox to center main content */
-  justify-content: center;
-  /* Horizontally center main content */
-  align-items: center;
-  /* Vertically center main content */
-  min-height: 100vh;
-  /* Set minimum height to 100% of viewport height */
-  width: 100%;
-  height: 200px;
-  max-width: 800px;
-  margin: auto;
-}
-
-
 .blur-container {
   filter: blur(5px);
 }
-
 
 .modal {
   display: none;
@@ -206,6 +209,10 @@ main {
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
 }
+
+/*------------------------------------------------------*/
+/* Score                                               */
+/*------------------------------------------------------*/
 
 .modal-content {
   background-color: #9667e0;
@@ -241,15 +248,18 @@ main {
 
 .close:hover,
 .close:focus {
-  color: #82b5ce;
+  color: #a9ddf7;
   text-decoration: none;
   cursor: pointer;
 }
 
-/* Media Queries */
+/*------------------------------------------------------*/
+/* Media Queries                                        */
+/*------------------------------------------------------*/
+
 @media only screen and (max-width: 480px) {
   .container {
-    width: 90%;
+    width: 60%;
     max-width: 600px;
   }
 
@@ -264,16 +274,17 @@ main {
   button {
     font-size: 10px;
   }
+
 }
 
 @media only screen and (min-width: 600px) {
   .container {
-    width: 80%;
+    width: 60%;
     max-width: 600px;
   }
 
   .time {
-    font-size: 60px;
+    font-size: 50px;
   }
 
   .userInput {
@@ -311,5 +322,9 @@ main {
   .container {
     width: 50%;
     max-width: 1200px;
+  }
+
+  .time {
+    font-size: 75px;
   }
 }
