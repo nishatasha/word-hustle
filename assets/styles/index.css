@@ -44,7 +44,7 @@ main {
 }
 
 .container {
-  width: 300px;
+  width: 270px;
   height: 510px;
   margin: auto;
   text-align: center;
@@ -66,7 +66,7 @@ main {
 h1 {
   font-weight: 700;
   margin-top: 5px;
-  margin-bottom: 70px;
+  margin-bottom: 80px;
   font-size: 25px;
   text-align: center;
   color: #d0cdc4;
@@ -146,7 +146,7 @@ input[type="text"] {
   justify-content: center;
   margin: 15px 30px 15px;
   border-radius: 5px;
-  width: 250px;
+  width: 280px;
   height: 40px;
   margin-left: auto;
   margin-right: auto;
@@ -172,7 +172,8 @@ button {
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
-  justify-content: space-between;
+  text-align: center;
+  justify-content: center;
 }
 
 button:hover {
@@ -310,11 +311,11 @@ button:hover {
 
 @media only screen and (min-width: 1200px) {
   .container {
-    width: 40%;
+    width: 30%;
   }
 
   button {
-    width: 48%;
+    width: 40%;
     margin-bottom: 10px;
   }
 }
