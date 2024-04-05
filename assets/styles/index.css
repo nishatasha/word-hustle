@@ -140,15 +140,14 @@ input[type="text"] {
   padding: 5px;
   font-size: 18px;
   text-align: center;
-  /* Center align the text */
-  margin: 10px auto;
-  /* Center the input horizontally */
-  border-radius: 5px;
   place-items: center;
   justify-content: center;
-  width: 300px;
-  height: 45px;
-  color: #000000;
+  margin: 15px 30px 15px;
+  border-radius: 5px;
+  width: 290px;
+  height: 40px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 /*------------------------------------------------------*/
