@@ -2,15 +2,30 @@ body {
   font-family: Arial, sans-serif, 'Open-Sans', 'Roboto';
   background-color: #000000;
   text-align: center;
-  background: url('../image/bg.gif');
+  position: relative; /* Ensure the body is positioned relative */
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Adjust the opacity (last value) as needed */
+  z-index: -1; /* Ensure the overlay is behind other content */
+}
+
+body {
+  /* Keep your existing background properties */
+  background-image: url('../image/bg.gif');
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   margin: 0;
-  /* Remove default body margin */
   padding: 0;
-  /* Remove default body padding */
 }
+
 
 .container {
   width: 80%;
@@ -163,17 +178,6 @@ main {
   margin: auto;
 }
 
-.modal {
-  display: none;
-  position: fixed;
-  z-index: -1;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
-}
 
 .blur-container {
   filter: blur(5px);
@@ -194,13 +198,26 @@ main {
 }
 
 .modal-content {
-  background-color: #930707;
+  background-color: hsla(230, 100%, 50%, 0.8);
   color: #fff;
   margin: 20% auto;
   padding: 20px;
-  border: 1px solid #888;
-  width: 80%;
-  width: 330px;
+  border: 1px solid #120606;
+  width: 400px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Box shadow with rgba for transparency */
+}
+
+.score-details {
+  display: flex;
+  justify-content: space-between;
+}
+
+.score-details p {
+  margin-right: 10px; /* Adjust the margin between each score detail */
+}
+
+.score-details p:first-child {
+  margin-right: 25px; /* Match the margin with other score details */
 }
 
 .close {

@@ -1,5 +1,28 @@
 'use strict';
-import Score from './score.js';
+
+// DOM elements
+const wordElement = document.querySelector('.word');
+const userInput = document.querySelector('.userInput');
+const timeElement = document.querySelector('.time');
+const scoreElement = document.querySelector('.score');
+const startBtn = document.querySelector('.startBtn');
+const restartBtn = document.querySelector('.restartBtn');
+const scoreBtn = document.querySelector('.scoreBtn');
+const gameEndContainer = document.querySelector('.gameEndContainer');
+const backgroundMusic = document.querySelector('#backgroundMusic');
+const correctSound = document.querySelector('#correctSound');
+const resetBtn = document.querySelector('.resetBtn');
+const modal = document.querySelector('#scoreModal');
+const closeButton = document.querySelector('.close');
+const timer = document.querySelector('.timer');
+const seconds = document.querySelector('.seconds');
+const gameElement = document.querySelector('.game');
+
+let time = 15;
+let score = 0;
+let isPlaying = false;
+let wordIndex;
+let timerInterval; // Variable to store the interval ID
 
 // Word list
 const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building', 'population',
@@ -17,31 +40,6 @@ const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
   'famous', 'league', 'memory', 'leather', 'planet', 'software', 'update', 'yellow',
   'keyboard', 'window'
 ];
-
-// DOM elements
-const wordElement = document.querySelector('.word');
-const userInput = document.querySelector('.userInput');
-const timeElement = document.querySelector('.time');
-const scoreElement = document.querySelector('.score');
-const startBtn = document.querySelector('.startBtn');
-const restartBtn = document.querySelector('.restartBtn');
-const scoreBtn = document.querySelector('.scoreBtn');
-const gameEndContainer = document.querySelector('.gameEndContainer');
-const backgroundMusic = document.querySelector('#backgroundMusic');
-const correctSound = document.querySelector('#correctSound');
-const resetBtn = document.querySelector('.resetBtn');
-const closeButton = document.querySelector('.close');
-const modal = document.querySelector('#scoreModal');
-const timer = document.querySelector('.timer')
-const seconds = document.querySelector(".seconds")
-const gameElement = document.querySelector(".game")
-
-
-let time = 99;
-let score = 0;
-let isPlaying = false;
-let wordIndex;
-let timerInterval; // Variable to store the interval ID
 
 // Initialize game
 function init() {
@@ -65,16 +63,17 @@ function init() {
   scoreBtn.addEventListener('click', showScore);
 }
 
+// Start game
 function startGame() {
   if (!isPlaying) {
     isPlaying = true;
     startBtn.style.display = 'none';
     restartBtn.style.display = 'inline-block';
-    time = 99;
+    time = 15;
     score = 0;
     scoreElement.textContent = score;
     showWord();
-    userInput.style.display = 'block'
+    userInput.style.display = 'block';
     userInput.value = '';
     userInput.focus();
     scoreElement.style.display = 'inline';
@@ -86,10 +85,11 @@ function startGame() {
   }
 }
 
+// Reset game
 function resetGame() {
   score = 0;
   scoreElement.textContent = score;
-  time = 99;
+  time = 15;
   timeElement.textContent = time;
   userInput.value = '';
   showWord();
@@ -103,6 +103,7 @@ function resetGame() {
   startGame(); // Restart the game
 }
 
+// Pause and reset sound
 function pauseAndResetSound(sound) {
   sound.pause();
   sound.currentTime = 0;
@@ -127,7 +128,7 @@ function restartGame() {
 
   // Reset game variables
   clearInterval(timerInterval);
-  time = 99;
+  time = 15;
   score = 0;
   scoreElement.textContent = score;
   timeElement.textContent = time;
@@ -137,7 +138,6 @@ function restartGame() {
   // Immediately redirect to the starting page without delay
   window.location.href = 'index.html';
 }
-
 
 // Game over
 function gameOver() {
@@ -151,37 +151,80 @@ function gameOver() {
   resetBtn.style.display = 'none';
   timer.style.display = 'none';
   seconds.style.display = 'none';
+
+  // Save score
+  saveScore(score);
 }
 
+// Open modal
 function openModal() {
   modal.style.display = 'block';
 }
 
+// Close modal
 function closeModal() {
   modal.style.display = 'none';
 }
 
+// Close modal when clicking on close button
 if (closeButton) {
   closeButton.addEventListener('click', closeModal);
 }
 
+// Show score
 function showScore() {
-  const scoreDetails = document.getElementById("scoreDetails");
-  const currentDate = new Date().toLocaleDateString('en-CA');
-  const percentage = ((score / words.length) * 100).toFixed(2);
-
-  // Create a new Score instance
-  const currentScore = new Score(currentDate, score, percentage);
-
-  // Populate modal with score data
-  scoreDetails.innerHTML = `
-      <p>Date: ${currentScore.date}</p>
-      <p>Hits: ${currentScore.hits}</p>
-      <p>Percentage: ${currentScore.percentage}%</p>
-  `;
-
-  // Open the modal
   openModal();
+  displayScoreboard();
+}
+
+// Display scoreboard
+function displayScoreboard() {
+  const scoreDetails = document.getElementById("scoreDetails");
+
+  // Retrieve score data from local storage
+  let scoreData = JSON.parse(localStorage.getItem('scores')) || [];
+
+  // Sort scores by hits
+  scoreData.sort((a, b) => b.hits - a.hits);
+
+  // Display top scores
+  scoreDetails.innerHTML = scoreData.slice(0, 9).map((score, index) => `
+    <div class="score-details">
+    <p>#${index + 1}</p>
+    <p>${score.date}<p>
+    <p>${score.hits.toString().padStart(3, ' ')} words</p>
+    <p>${score.percentage}%</p>
+    </div>
+  `).join('');
+}
+
+// Save score
+function saveScore(score) {
+  // Retrieve score data from local storage
+  let scoreData = JSON.parse(localStorage.getItem('scores')) || [];
+
+  // Create score object
+  const currentDate = new Date();
+  const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+    "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+  ];
+  const day = currentDate.getDate().toString().padStart(2, '0'); // Ensure day is two digits with leading zero if necessary
+  const formattedDate = `${monthNames[currentDate.getMonth()]} ${day}, ${currentDate.getFullYear()}`;
+
+  const percentage = ((score / words.length) * 100).toFixed(2);
+  const newScore = { date: formattedDate, hits: score, percentage: percentage };
+
+  // Add score to array
+  scoreData.push(newScore);
+
+  // Sort scores by hits
+  scoreData.sort((a, b) => b.hits - a.hits);
+
+  // Store only top 9 scores
+  scoreData.splice(9);
+
+  // Store score data in local storage
+  localStorage.setItem('scores', JSON.stringify(scoreData));
 }
 
 // Show random word
@@ -193,7 +236,7 @@ function showWord() {
 
   wordIndex = newIndex;
   wordElement.textContent = words[wordIndex];
-  resetBtn.style.display = 'inline-block'
+  resetBtn.style.display = 'inline-block';
 }
 
 // Update time
@@ -201,7 +244,7 @@ function updateTime() {
   time--;
   timeElement.textContent = time;
 
-  if (time === 99) {
+  if (time === 15) {
     showWord();
   }
 
@@ -220,11 +263,7 @@ function updateTime() {
   } else {
     timeElement.textContent = time;
   }
-
-
 }
-
-
 
 // Start match
 function startMatch() {
@@ -262,6 +301,3 @@ function matchWords() {
 
 // Start game when Start button is clicked
 startBtn.addEventListener('click', startGame);
-
-restartBtn.addEventListener('click', restartGame);
-resetBtn.addEventListener('click', resetGame);
