@@ -66,7 +66,7 @@ main {
 h1 {
   font-weight: 700;
   margin-top: 5px;
-  margin-bottom: 70px;
+  margin-bottom: 80px;
   font-size: 25px;
   text-align: center;
   color: #c0bdb1;
@@ -130,7 +130,7 @@ p {
 
 .word {
   font-size: 27px;
-  margin-top: 40px;
+  margin-top: 30px;
   text-transform: uppercase;
 }
 
