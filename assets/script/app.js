@@ -14,7 +14,7 @@ const correctSound = document.querySelector('#correctSound');
 const resetBtn = document.querySelector('.resetBtn');
 const modal = document.querySelector('#scoreModal');
 const closeButton = document.querySelector('.close');
-const timer = document.querySelector('.timer');
+const timer = document.querySelector('.clock');
 const seconds = document.querySelector('.seconds');
 const gameElement = document.querySelector('.game');
 
@@ -271,7 +271,7 @@ function startMatch() {
     isPlaying = true;
     score++;
     scoreElement.textContent = score;
-    wordElement.style.color = '#fae128';
+    wordElement.style.color = '#94e5ff';
     wordElement.style.fontWeight = '600';
 
     correctSound.play();

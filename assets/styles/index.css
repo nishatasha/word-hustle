@@ -12,7 +12,7 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.4); /* Adjust the opacity (last value) as needed */
+  background: rgba(0, 0, 0, 0.3); /* Adjust the opacity (last value) as needed */
   z-index: -1; /* Ensure the overlay is behind other content */
 }
 
@@ -35,21 +35,27 @@ body {
   text-align: center;
   padding: 20px;
   height: 500px;
-  background-color: rgba(21, 21, 247, 0.95);
+  background-color: rgba(70, 39, 206, 0.97);
   color: #fff;
   border-radius: 5px;
-  border: 1px solid rgba(12, 12, 181, 0.95);
+  border: 1px solid rgba(70, 39, 206, 0.97);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  z-index: 1;
 }
 
 
 h1 {
   font-weight: 700;
-  margin-top: 15px;
-  font-size: 35px;
+  margin-top: 5px;
+  margin-bottom: 80px;
+  font-size: 25px;
   text-align: center;
-  color: #fae128;
-  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  color: #c0bdb1;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h2 {
+  color: #0f0f0f;
 }
 
 .userInput {
@@ -68,6 +74,7 @@ p {
   font-size: 20px;
   margin-top: 10px;
   position: relative;
+  text-align: center;
   left: 45%;
   right: 50%;
 }
@@ -86,9 +93,9 @@ p {
   /* Ensure proper positioning of child elements */
 }
 
-.timer {
+.clock {
   position: absolute;
-  top: -45px;
+  top: -60px;
   left: 50%;
   transform: translateX(-50%);
   margin-top: 30px;
@@ -108,8 +115,9 @@ p {
 }
 
 .time {
-  font-size: 85px;
+  font-size: 88px;
   line-height: 1.2;
+  color: #fff;
 }
 
 
@@ -136,7 +144,7 @@ button {
   margin-top: 20px;
   width: 150px;
   margin-right: 10px;
-  background-color: hsl(211, 100%, 50%, 0.8);
+  background-color: #07b4f3;
   color: #fff;
   border: none;
   border-radius: 5px;
@@ -145,18 +153,16 @@ button {
 }
 
 button:hover {
-  background-color: #ffffff;
-  color: hsl(211, 100%, 50%);
+  background-color: #0d9fd4;
 }
 
 .scoreBtn {
   background-color: hsl(36, 91%, 50%);
-  color: #ffffff;
+  color: fff;
 }
 
 .scoreBtn:hover {
-  background-color: #ffffff;
-  color: hsl(230, 100%, 50%);
+  background-color: hsl(36, 93%, 41%);
 }
 
 .resetBtn {
@@ -198,30 +204,31 @@ main {
 }
 
 .modal-content {
-  background-color: hsla(230, 100%, 50%, 0.8);
+  background-color: #817f8d;
   color: #fff;
   margin: 20% auto;
   padding: 20px;
   border: 1px solid #120606;
   width: 400px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5); /* Box shadow with rgba for transparency */
+  border-radius: 10px;
+  font-family: monospace;
+  box-shadow: 5px 0 10px rgba(130, 126, 126, 0.5); /* Box shadow with rgba for transparency */
 }
 
 .score-details {
   display: flex;
   justify-content: space-between;
+  width: 100%;
 }
 
 .score-details p {
-  margin-right: 10px; /* Adjust the margin between each score detail */
+  margin-right: 10px;
+  text-align: center;
 }
 
-.score-details p:first-child {
-  margin-right: 25px; /* Match the margin with other score details */
-}
 
 .close {
-  color: #aaa;
+  color:#b6d9ea;
   float: right;
   font-size: 28px;
   font-weight: bold;
