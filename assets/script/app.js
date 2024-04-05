@@ -1,5 +1,3 @@
-'use strict';
-
 // DOM elements
 const wordElement = document.querySelector('.word');
 const userInput = document.querySelector('.userInput');
@@ -17,6 +15,7 @@ const closeButton = document.querySelector('.close');
 const timer = document.querySelector('.clock');
 const seconds = document.querySelector('.seconds');
 const gameElement = document.querySelector('.game');
+const gameOverMusic = document.querySelector('#gameOverMusic');
 
 let time = 15;
 let score = 0;
@@ -40,6 +39,17 @@ const words = ['dinosaur', 'love', 'pineapple', 'calendar', 'robot', 'building',
   'famous', 'league', 'memory', 'leather', 'planet', 'software', 'update', 'yellow',
   'keyboard', 'window'
 ];
+
+// Function to play the game over music
+function playGameOverMusic() {
+  gameOverMusic.play();
+}
+
+// Function to stop the game over music
+function stopGameOverMusic() {
+  gameOverMusic.pause();
+  gameOverMusic.currentTime = 0;
+}
 
 // Initialize game
 function init() {
@@ -135,6 +145,10 @@ function restartGame() {
   timeElement.style.color = ''; // Reset color to default
   gameElement.style.display = 'none';
 
+  // Stop background music and game over music
+  backgroundMusic.pause();
+  stopGameOverMusic();
+
   // Immediately redirect to the starting page without delay
   window.location.href = 'index.html';
 }
@@ -144,6 +158,8 @@ function gameOver() {
   isPlaying = false;
   startBtn.disabled = false;
   backgroundMusic.pause();
+  stopGameOverMusic(); // Stop game over music if still playing
+  playGameOverMusic(); // Play game over music
   startBtn.style.display = 'none';
   userInput.style.display = 'none';
   wordElement.style.display = 'none';
@@ -301,3 +317,8 @@ function matchWords() {
 
 // Start game when Start button is clicked
 startBtn.addEventListener('click', startGame);
+
+// Event listener for "Play Again" button to stop game over music
+restartBtn.addEventListener('click', () => {
+  stopGameOverMusic();
+});

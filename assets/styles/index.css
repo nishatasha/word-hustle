@@ -2,7 +2,8 @@ body {
   font-family: Arial, sans-serif, 'Open-Sans', 'Roboto';
   background-color: #000000;
   text-align: center;
-  position: relative; /* Ensure the body is positioned relative */
+  position: relative;
+  /* Ensure the body is positioned relative */
 }
 
 body::before {
@@ -12,8 +13,10 @@ body::before {
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.3); /* Adjust the opacity (last value) as needed */
-  z-index: -1; /* Ensure the overlay is behind other content */
+  background: rgba(0, 0, 0, 0.3);
+  /* Adjust the opacity (last value) as needed */
+  z-index: -1;
+  /* Ensure the overlay is behind other content */
 }
 
 body {
@@ -55,7 +58,7 @@ h1 {
 }
 
 h2 {
-  color: #0f0f0f;
+  color: #b6d9ea;
 }
 
 .userInput {
@@ -157,12 +160,12 @@ button:hover {
 }
 
 .scoreBtn {
-  background-color: hsl(36, 91%, 50%);
-  color: fff;
+  background-color: #9667e0;
+  color: #fff;
 }
 
 .scoreBtn:hover {
-  background-color: hsl(36, 93%, 41%);
+  background-color: #804bd4;
 }
 
 .resetBtn {
@@ -204,7 +207,7 @@ main {
 }
 
 .modal-content {
-  background-color: #817f8d;
+  background-color: #9667e0;
   color: #fff;
   margin: 20% auto;
   padding: 20px;
@@ -212,7 +215,8 @@ main {
   width: 400px;
   border-radius: 10px;
   font-family: monospace;
-  box-shadow: 5px 0 10px rgba(130, 126, 126, 0.5); /* Box shadow with rgba for transparency */
+  box-shadow: 5px 0 10px rgba(130, 126, 126, 0.5);
+  /* Box shadow with rgba for transparency */
 }
 
 .score-details {
@@ -228,7 +232,7 @@ main {
 
 
 .close {
-  color:#b6d9ea;
+  color: #b6d9ea;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -236,7 +240,7 @@ main {
 
 .close:hover,
 .close:focus {
-  color: black;
+  color: #82b5ce;
   text-decoration: none;
   cursor: pointer;
 }
