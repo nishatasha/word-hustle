@@ -142,7 +142,6 @@ function restartGame() {
   score = 0;
   scoreElement.textContent = score;
   timeElement.textContent = time;
-  timeElement.style.color = ''; // Reset color to default
   gameElement.style.display = 'none';
 
   // Stop background music and game over music
@@ -268,7 +267,7 @@ function updateTime() {
     timeElement.style.color = '#ff0f0f'; // Change color to red for the last 10 seconds
     seconds.style.color = '#ff0f0f';
   } else {
-    timeElement.style.color = ''; // Reset color to default
+    timeElement.style.color = '#ffffff'; // Reset color to default
     seconds.style.color = '';
   }
 
@@ -299,7 +298,7 @@ function startMatch() {
     }, 1000);
 
     setTimeout(() => {
-      wordElement.style.color = ''; // Reset color after a delay (optional)
+      wordElement.style.color = '#ffffff'; // Reset color after a delay (optional)
       showWord();
     }, 500); // Adjust delay as needed
     userInput.value = '';
