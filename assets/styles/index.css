@@ -136,14 +136,14 @@ p {
 
 input[type="text"] {
   padding: 5px;
-  font-size: 18px;
+  font-size: 20px;
   text-align: center;
   place-items: center;
   justify-content: center;
   margin: 15px 30px 15px;
   border-radius: 5px;
-  width: 280px;
-  height: 40px;
+  width: 300px;
+  height: 45px;
   margin-left: auto;
   margin-right: auto;
 }
